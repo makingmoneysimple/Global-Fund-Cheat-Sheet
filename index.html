@@ -21,6 +21,7 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
+    overflow-x: hidden;
     font-family: 'DM Sans', sans-serif;
     background: var(--bg);
     color: var(--dark);
@@ -263,7 +264,7 @@
   }
 
   .strip-notes { background: var(--brand-light); border-color: #f0ccc9; border-bottom: 2px solid #e8b8b5; }
-  .strip-indices { background: #f0f4ff; border-color: #d8e2f8; border-bottom: 2px solid #c0ccf0; }
+  .strip-indices { background: #f0f4ff; border-color: #d8e2f8; border-bottom: 2px solid #c0ccf0; margin-bottom: 0; }
 
   .strip-toggle {
     display: flex;
@@ -287,8 +288,8 @@
   .strip-toggle .arrow { transition: transform 0.25s ease; font-size: 10px; }
   .strip-toggle.open .arrow { transform: rotate(180deg); }
 
-  .strip-body { display: none; padding-bottom: 24px; }
-  .strip-body.open { display: block; }
+  .strip-body { display: none; padding-bottom: 24px; width: 100%; }
+  .strip-body.open { display: block; width: 100%; }
 
   /* NOTES GRID */
   .notes-grid {
@@ -322,7 +323,13 @@
     .indices-grid .index-card:nth-child(8),
     .indices-grid .index-card:nth-child(9) { grid-column: auto; }
   }
-  @media (max-width: 500px) { .indices-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 600px) { 
+    .indices-grid { grid-template-columns: 1fr; }
+    .indices-grid .index-card:nth-child(8),
+    .indices-grid .index-card:nth-child(9) { grid-column: auto; }
+    .key-row { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .key-item { font-size: 12px; }
+  }
 
   .index-card {
     background: var(--white);
@@ -377,7 +384,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 32px;
+    margin-bottom: 12px;
     flex-wrap: wrap;
   }
 
@@ -412,7 +419,7 @@
   .pill.global-pill.active { background: #2a6a2a; border-color: #2a6a2a; color: white; }
 
   /* SECTION */
-  .section-block { margin-bottom: 48px; }
+  .section-block { margin-bottom: 24px; }
 
   .section-header { display: flex; align-items: baseline; gap: 14px; margin-bottom: 18px; }
 
@@ -653,6 +660,7 @@
     max-width: 420px;
   }
   .hero-card {
+    overflow: hidden;
     display: flex;
     align-items: center;
     gap: 16px;
@@ -670,7 +678,8 @@
   }
   .hero-card-icon { font-size: 22px; flex-shrink: 0; }
   .hero-card-body { flex: 1; }
-  .hero-card-title { font-size: 14px; font-weight: 600; color: #e8e8e8; line-height: 1.3; margin-bottom: 3px; }
+  .hero-card-title {
+    white-space: normal !important; font-size: 14px; font-weight: 600; color: #e8e8e8; line-height: 1.3; margin-bottom: 3px; }
   .hero-card-sub { font-size: 12px; color: #666; font-weight: 300; }
   .hero-card-arrow { color: #444; font-size: 18px; flex-shrink: 0; transition: color 0.2s; }
   .hero-card:hover .hero-card-arrow { color: var(--brand); }
@@ -696,10 +705,23 @@
   @media (max-width: 700px) {
     header, .hero, main, .links-bar { padding-left: 20px; padding-right: 20px; }
     .collapsible-strip { padding-left: 20px; padding-right: 20px; }
-    .hero h1 { font-size: clamp(28px, 11vw, 48px); }
+    .hero h1 { font-size: clamp(24px, 9vw, 48px); }
     .section-header { flex-direction: column; align-items: flex-start; gap: 4px; }
     .section-title { font-size: 20px; }
   }
+
+  @media (max-width: 600px) {
+    .collapsible-strip .strip-toggle,
+    .collapsible-strip .strip-body { padding-left: 16px; padding-right: 16px; }
+    main { padding: 0 0 40px; }
+    .section-block { padding: 0 16px; }
+    .filter-row { padding: 16px; }
+    .section-header { padding: 20px 16px 8px; }
+    .hero-inner { padding: 0 4px; }
+    .why-grid { grid-template-columns: 1fr !important; }
+    .table-wrap { margin: 0 -16px; border-radius: 0; }
+  }
+
 </style>
 </head>
 <body>
@@ -814,7 +836,7 @@
     <span>📊</span> Indices breakdown - what each index tracks
     <span class="arrow">▼</span>
   </button>
-  <div class="strip-body" id="indicesBody">
+  <div class="strip-body" id="indicesBody" style="clear:both;width:100%">
     <div class="indices-grid">
 
       <div class="index-card">
@@ -937,6 +959,8 @@
     </div>
   </div>
 </div>
+
+<div style="height:16px;background:var(--bg)"></div>
 
 <main>
 
