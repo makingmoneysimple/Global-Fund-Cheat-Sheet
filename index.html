@@ -20,8 +20,9 @@
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
-  body {
+  html, body {
     overflow-x: hidden;
+    max-width: 100%;
     font-family: 'DM Sans', sans-serif;
     background: var(--bg);
     color: var(--dark);
@@ -70,10 +71,11 @@
 
   .hero p {
     color: #aaa;
-    font-size: 15px;
+    font-size: 17px;
     font-weight: 300;
     max-width: 560px;
     line-height: 1.7;
+    white-space: nowrap;
   }
 
   /* COLLAPSIBLE STRIPS */
@@ -532,6 +534,8 @@
     background: var(--white);
     border: 1px solid var(--border);
     border-radius: 14px;
+    overflow: hidden;
+    max-width: 100%;
   }
 
   .key-title {
@@ -544,7 +548,7 @@
     margin-bottom: -6px;
   }
 
-  .key-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--mid); }
+  .key-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--mid); max-width: 100%; flex-wrap: wrap; }
   @media (min-width: 701px) {
     main { padding-top: 16px; }
   }
@@ -553,6 +557,8 @@
     .key-row { flex-direction: column; align-items: flex-start; gap: 10px; padding: 16px; }
     .key-title { margin-bottom: 4px; }
     .key-item { font-size: 12px; white-space: nowrap; }
+    .hero p { font-size: 17px; margin-bottom: 4px; }
+    .hero p[style*="margin-top:-8px"] { margin-top: 6px !important; }
   }
   .key-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
 
@@ -742,7 +748,7 @@
   <div class="hero-inner">
   <h1>Global Index Fund<span>Cheat Sheet</span></h1>
   <p>A comparison of the top global index funds for UK investors.</p>
-  <p style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:-8px">Data last updated: 9 April 2026</p>
+  <p style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:6px">Data last updated: 9 April 2026</p>
   <div class="nfa-badge">⚠️ This is not financial advice</div>
   <div class="hero-cards">
     <a href="https://www.makingmoneysimple.co.uk/how-i-can-help-individual" target="_blank" class="hero-card">
@@ -1326,7 +1332,7 @@
     <div class="key-item"><span style="color:#3a8a5f;font-weight:600">Accumulation</span> = auto-reinvests dividends into the fund</div>
     <div class="key-item"><span style="color:#c07030;font-weight:600">Income</span> = pays dividends out to you</div>
     <div class="key-item"><span class="global-badge is-global">🌍 Truly Global</span> = Developed and emerging markets stocks</div>
-    <div class="key-item"><span class="global-badge not-global">⚠️ Not truly global</span> = Excludes emerging markets. Developed market stocks only</div>
+    <div class="key-item"><span class="global-badge not-global">⚠️ Not truly global</span> = Excludes emerging markets</div>
   </div>
 
 </main>
