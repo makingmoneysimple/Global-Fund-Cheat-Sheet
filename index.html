@@ -377,7 +377,7 @@
   .not-global { background: #fff0e0; color: #8a4a00; }
 
   /* MAIN */
-  main { padding: 40px 40px 60px; max-width: 1400px; margin: 0 auto; }
+  main { padding: 16px 40px 60px; max-width: 1400px; margin: 0 auto; }
 
   /* FILTERS */
   .filter-row {
@@ -525,8 +525,8 @@
   /* KEY */
   .key-row {
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+    flex-direction: column;
+    gap: 10px;
     margin-top: 36px;
     padding: 22px 26px;
     background: var(--white);
@@ -545,6 +545,15 @@
   }
 
   .key-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--mid); }
+  @media (min-width: 701px) {
+    main { padding-top: 16px; }
+  }
+  @media (max-width: 700px) {
+    main { padding: 28px 16px 60px; }
+    .key-row { flex-direction: column; align-items: flex-start; gap: 10px; padding: 16px; }
+    .key-title { margin-bottom: 4px; }
+    .key-item { font-size: 12px; white-space: nowrap; }
+  }
   .key-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
 
   footer {
@@ -1314,9 +1323,10 @@
   <!-- KEY -->
   <div class="key-row">
     <div class="key-title">Key</div>
-    <div class="key-item"><span style="color:#3a8a5f;font-weight:600">Accumulation</span> = auto-reinvests dividends back into the fund</div>
+    <div class="key-item"><span style="color:#3a8a5f;font-weight:600">Accumulation</span> = auto-reinvests dividends into the fund</div>
     <div class="key-item"><span style="color:#c07030;font-weight:600">Income</span> = pays dividends out to you</div>
-    <div class="key-item"><span class="global-badge is-global">🌍 Truly Global</span> = Developed and emerging markets stocks &nbsp;&nbsp; <span class="global-badge not-global">⚠️ Not truly global</span> = Excludes emerging markets. Developed market stocks only</div>
+    <div class="key-item"><span class="global-badge is-global">🌍 Truly Global</span> = Developed and emerging markets stocks</div>
+    <div class="key-item"><span class="global-badge not-global">⚠️ Not truly global</span> = Excludes emerging markets. Developed market stocks only</div>
   </div>
 
 </main>
