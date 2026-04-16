@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global Index Fund Cheatsheet · MMS</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand: #F0807F;
+    --brand-light: #fdeeed;
+    --brand-mid: #f5a8a7;
+    --dark: #1a1a1a;
+    --mid: #4a4a4a;
+    --light: #8a8a8a;
+    --border: #e8e3df;
+    --bg: #faf8f6;
+    --white: #ffffff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--dark);
+    min-height: 100vh;
+  }
+
+  header {
+    background: var(--dark);
+    padding: 28px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--white); }
+  .logo span { color: var(--brand); }
+
+  .header-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--light);
+  }
+
+  .hero {
+    background: var(--dark);
+    padding: 48px 40px 60px;
+    border-bottom: 3px solid var(--brand);
+  }
+  .hero-inner {
+    max-width: 580px;
+    margin: 0 auto;
+  }
+
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(36px, 5vw, 60px);
+    color: var(--white);
+    line-height: 1.05;
+    margin-bottom: 14px;
+    max-width: 700px;
+  }
+
+  .hero h1 span { display: block; color: var(--brand); }
+
+  .hero p {
+    color: #aaa;
+    font-size: 15px;
+    font-weight: 300;
+    max-width: 560px;
+    line-height: 1.7;
+  }
+
+  /* COLLAPSIBLE STRIPS */
+  .collapsible-strip {
+    padding: 0;
+    border-bottom: 1px solid;
+  }
+  .collapsible-strip .strip-toggle,
+  .collapsible-strip .strip-body {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .strip-toggle-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+
+  .strip-why { background: #f0f5ee; border-color: #c8ddc4; border-bottom: 2px solid #b0ccac; }
+  .strip-why .strip-toggle { color: #2a6a2a; }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    padding-bottom: 4px;
+  }
+
+  .why-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 22px 24px;
+    border: 1px solid #d4e8d0;
+    font-size: 14px;
+    color: var(--mid);
+    line-height: 1.7;
+  }
+
+  .why-card-icon { font-size: 16px; margin-right: 6px; display: inline; vertical-align: middle; }
+
+  .why-card strong {
+    display: inline;
+    color: var(--dark);
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .why-card-title { display: block; margin-bottom: 6px; }
+
+  .why-card p { margin: 0; }
+
+  .why-card:last-child { grid-column: 1 / -1; }
+  @media (max-width: 900px) { .why-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .why-grid { grid-template-columns: 1fr; } }
+
+
+  /* INDEX TABLE */
+  .idx-section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #3a5cb8;
+    margin-bottom: 10px;
+  }
+  .idx-table-wrap {
+    overflow-x: auto;
+    border-radius: 10px;
+    border: 1px solid #d8e2f8;
+    background: var(--white);
+  }
+  .idx-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .idx-table thead th {
+    background: #1a1a1a;
+    color: #bbb;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding: 11px 14px;
+    text-align: left;
+    white-space: nowrap;
+  }
+  .idx-table thead th:first-child { border-radius: 9px 0 0 0; }
+  .idx-table thead th:last-child { border-radius: 0 9px 0 0; }
+  .idx-table tbody tr { border-bottom: 1px solid #eef0f8; }
+  .idx-table tbody tr:last-child { border-bottom: none; }
+  .idx-table tbody tr:hover { background: #f8f9ff; }
+  .idx-table td { padding: 12px 14px; vertical-align: middle; }
+  .idx-provider { font-size: 12px; color: var(--light); font-weight: 500; }
+  .idx-note { font-size: 12px; color: var(--light); }
+  .idx-funds { font-size: 12px; font-weight: 600; color: var(--dark); }
+
+
+  /* RANKING SECTION */
+  .ranking-toggle-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 0;
+  }
+  .ranking-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fffaf0;
+    border: 1.5px solid #e8d090;
+    border-radius: 999px;
+    padding: 8px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #8a6010;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.15s;
+  }
+  .ranking-toggle-btn:hover { background: #fff3d0; border-color: #c8a040; }
+  .ranking-toggle-arrow { font-size: 10px; }
+  .ranking-nfa { font-size: 13px; color: var(--dark); font-style: italic; font-weight: 500; }
+  .ranking-inner { padding: 20px 0 4px; }
+
+  /* RANKING STRIP */
+  .ranking-section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #8a6010;
+    margin-bottom: 10px;
+  }
+  .ranking-cards { display: flex; flex-direction: column; gap: 10px; }
+  .ranking-card {
+    display: flex;
+    gap: 16px;
+    background: var(--white);
+    border: 1px solid #f0e0b0;
+    border-radius: 12px;
+    padding: 16px 20px;
+    align-items: flex-start;
+  }
+  .ranking-medal { font-size: 28px; flex-shrink: 0; line-height: 1; margin-top: 2px; }
+  .ranking-card-body { flex: 1; }
+  .ranking-fund {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 8px;
+  }
+  .ranking-provider {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--light);
+    margin-left: 6px;
+  }
+
+  .ranking-bullets {
+    margin: 4px 0 0 0;
+    padding-left: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .ranking-bullets li {
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.5;
+  }
+
+  .ranking-reasons { display: flex; flex-direction: column; gap: 5px; }
+  .ranking-reason {
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.5;
+    padding-left: 12px;
+    border-left: 2px solid #f0e0b0;
+  }
+  .ranking-reason:first-child {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--dark);
+    border-left-color: var(--brand);
+    padding-left: 12px;
+  }
+
+  .strip-notes { background: var(--brand-light); border-color: #f0ccc9; border-bottom: 2px solid #e8b8b5; }
+  .strip-indices { background: #f0f4ff; border-color: #d8e2f8; border-bottom: 2px solid #c0ccf0; }
+
+  .strip-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 18px 0;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    user-select: none;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+  }
+
+  .strip-notes .strip-toggle { color: var(--brand); }
+  .strip-indices .strip-toggle { color: #3a5cb8; }
+
+  .strip-toggle .arrow { transition: transform 0.25s ease; font-size: 10px; }
+  .strip-toggle.open .arrow { transform: rotate(180deg); }
+
+  .strip-body { display: none; padding-bottom: 24px; }
+  .strip-body.open { display: block; }
+
+  /* NOTES GRID */
+  .notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 12px;
+  }
+
+  .note-card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 14px 16px;
+    border-left: 3px solid var(--brand);
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.6;
+  }
+
+  .note-card strong { display: block; color: var(--dark); margin-bottom: 4px; font-weight: 600; }
+
+  /* INDICES GRID */
+  .indices-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  .indices-grid .index-card:nth-child(8) { grid-column: 1; }
+  .indices-grid .index-card:nth-child(9) { grid-column: 2; }
+  @media (max-width: 900px) {
+    .indices-grid { grid-template-columns: repeat(2, 1fr); }
+    .indices-grid .index-card:nth-child(8),
+    .indices-grid .index-card:nth-child(9) { grid-column: auto; }
+  }
+  @media (max-width: 500px) { .indices-grid { grid-template-columns: 1fr; } }
+
+  .index-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 18px 20px;
+    border: 1px solid #d8e2f8;
+  }
+
+  .index-card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+
+  .index-card-body {
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.65;
+  }
+
+  .index-card-body .stat {
+    display: inline-block;
+    background: #f0f0f0;
+    border-radius: 5px;
+    padding: 2px 7px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #555555;
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+
+  .global-badge {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 999px;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+  }
+
+  .is-global { background: #e0f5e0; color: #2a6a2a; }
+  .not-global { background: #fff0e0; color: #8a4a00; }
+
+  /* MAIN */
+  main { padding: 40px 40px 60px; max-width: 1400px; margin: 0 auto; }
+
+  /* FILTERS */
+  .filter-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+
+  .filter-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--light);
+    margin-right: 4px;
+  }
+
+  .pill {
+    padding: 7px 14px;
+    border-radius: 999px;
+    border: 1.5px solid var(--border);
+    background: var(--white);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--mid);
+    cursor: pointer;
+    transition: all 0.18s ease;
+    font-family: 'DM Sans', sans-serif;
+    white-space: nowrap;
+  }
+
+  .pill:hover { border-color: var(--brand-mid); color: var(--brand); }
+  .pill.active { background: var(--brand); border-color: var(--brand); color: var(--white); }
+
+  .pill.global-pill { border-color: #a0d0a0; color: #2a6a2a; }
+  .pill.global-pill:hover { background: #2a6a2a; border-color: #2a6a2a; color: white; }
+  .pill.global-pill.active { background: #2a6a2a; border-color: #2a6a2a; color: white; }
+
+  /* SECTION */
+  .section-block { margin-bottom: 48px; }
+
+  .section-header { display: flex; align-items: baseline; gap: 14px; margin-bottom: 18px; }
+
+  .section-title { font-family: 'DM Serif Display', serif; font-size: 26px; color: var(--dark); }
+  .section-sub { font-size: 13px; color: var(--light); font-weight: 300; }
+
+  /* TABLE */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: var(--white);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+  }
+
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }  thead th {
+    background: var(--dark);
+    color: #bbb;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding: 14px 18px;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  thead th:first-child { border-radius: 13px 0 0 0; }
+  thead th:last-child { border-radius: 0 13px 0 0; }
+
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s ease; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #fdf4f4; }
+
+  td { padding: 15px 18px; color: var(--mid); vertical-align: middle; overflow-wrap: break-word; word-break: break-word; }
+
+  .ticker-cell { font-weight: 700; color: var(--dark); font-size: 15px; white-space: nowrap; letter-spacing: -0.3px; }
+  .medal { margin-left: 4px; font-size: 13px; }
+
+  .provider-badge {
+    display: inline-block;
+    background: #f0ece8;
+    color: var(--mid);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  .class-tag { font-size: 12px; color: var(--light); white-space: nowrap; }
+  td:has(.acc), td:has(.inc) { white-space: nowrap; min-width: 110px; }
+  .acc { color: #3a8a5f; font-weight: 600; }
+  .inc { color: #c07030; font-weight: 600; }
+
+  .fee-cell { font-weight: 700; font-size: 15px; }
+  /* fee colours removed - uniform display */
+
+  .index-pill {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 6px;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+  }
+
+  .index-ftse-aw, .index-ftse-dev, .index-ftse-hdy { background: #e8f0fe; color: #1a5cb8; }
+
+
+  .index-msci-acwi { background: #fde8ff; color: #8a3aaa; }
+  .index-msci-world { background: #fde8ff; color: #aa5ac8; }
+  .index-solactive { background: #e8f4f8; color: #1a6880; }
+  .index-ftse-gac { background: #e8f0fe; color: #1a5cb8; }
+
+  .holdings-cell { font-weight: 500; }
+  .aum-cell { font-weight: 500; font-size: 13px; }
+
+  .notes-cell { font-size: 12px; color: var(--light); min-width: 300px; max-width: 380px; line-height: 1.5; padding-right: 12px; }
+
+  .link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--brand);
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: 1.5px solid var(--brand-mid);
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+
+  .link-btn:hover { background: var(--brand); color: var(--white); border-color: var(--brand); }
+
+  .hidden { display: none !important; }
+
+  .no-results { text-align: center; padding: 48px; color: var(--light); font-size: 14px; display: none; }
+
+  /* KEY */
+  .key-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 36px;
+    padding: 22px 26px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+  }
+
+  .key-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--light);
+    width: 100%;
+    margin-bottom: -6px;
+  }
+
+  .key-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--mid); }
+  .key-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  footer {
+    text-align: center;
+    padding: 28px 40px;
+    border-top: 1px solid var(--border);
+    font-size: 15px;
+    color: var(--mid);
+    line-height: 1.8;
+    background: var(--white);
+  }
+
+
+
+  .section-divider-row td {
+    background: var(--dark);
+    color: #bbb;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding: 10px 18px;
+    border: none;
+  }
+
+
+  /* SCROLL HINT */
+  .scroll-hint {
+    display: none;
+    font-size: 11px;
+    color: var(--light);
+    text-align: right;
+    margin-bottom: 6px;
+    letter-spacing: 0.3px;
+  }
+  @media (max-width: 700px) {
+    .scroll-hint { display: block; }
+  }
+
+
+  @media (max-width: 700px) {
+    #etf-table td:first-child,
+    #etf-table th:first-child,
+    #mutual-table td:first-child,
+    #mutual-table th:first-child {
+      position: sticky;
+      left: 0;
+      background: var(--white);
+      z-index: 5;
+      box-shadow: 2px 0 6px rgba(0,0,0,0.08);
+    }
+    #etf-table th:first-child,
+    #mutual-table th:first-child {
+      background: var(--dark);
+      z-index: 6;
+    }
+  }
+
+
+  /* PROVIDER LOGOS */
+  .provider-cell {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    min-width: 130px;
+  }
+  .provider-logo {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    object-fit: contain;
+    background: #fff;
+    flex-shrink: 0;
+  }
+  .provider-name { font-size: 13px; font-weight: 500; color: var(--dark); }
+
+  /* SORTABLE COLUMNS */
+  th.sortable {
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+  }
+  th.sortable:hover { color: var(--brand-mid); }
+  th.sortable .sort-icon { margin-left: 4px; opacity: 0.4; font-size: 9px; }
+  th.sortable.sort-asc .sort-icon::after { content: "▲"; opacity: 1; }
+  th.sortable.sort-desc .sort-icon::after { content: "▼"; opacity: 1; }
+  th.sortable:not(.sort-asc):not(.sort-desc) .sort-icon::after { content: "⇅"; }
+
+
+
+  /* NFA BADGE */
+  .nfa-badge {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 6px 14px;
+    background: rgba(240,128,127,0.12);
+    border: 1px solid rgba(240,128,127,0.3);
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--brand-mid);
+    letter-spacing: 0.2px;
+  }
+
+  /* HERO CARDS */
+  .hero-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 28px;
+    max-width: 420px;
+  }
+  .hero-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 20px;
+    background: #242424;
+    border: 1px solid #303030;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .hero-card:hover {
+    background: #2a2020;
+    border-color: rgba(240,128,127,0.45);
+    box-shadow: 0 0 20px rgba(240,128,127,0.08);
+  }
+  .hero-card-icon { font-size: 22px; flex-shrink: 0; }
+  .hero-card-body { flex: 1; }
+  .hero-card-title { font-size: 14px; font-weight: 600; color: #e8e8e8; line-height: 1.3; margin-bottom: 3px; }
+  .hero-card-sub { font-size: 12px; color: #666; font-weight: 300; }
+  .hero-card-arrow { color: #444; font-size: 18px; flex-shrink: 0; transition: color 0.2s; }
+  .hero-card:hover .hero-card-arrow { color: var(--brand); }
+
+
+  .notes-grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .notes-grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .other-tag {
+    display: inline-block;
+    background: var(--brand-light);
+    color: var(--brand);
+    border: 1px solid var(--brand-mid);
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 9px;
+  }
+  @media (max-width: 800px) {
+    .notes-grid-3 { grid-template-columns: 1fr; }
+    .notes-grid-2 { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 700px) {
+    header, .hero, main, .links-bar { padding-left: 20px; padding-right: 20px; }
+    .collapsible-strip { padding-left: 20px; padding-right: 20px; }
+    .hero h1 { font-size: clamp(28px, 11vw, 48px); }
+    .section-header { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .section-title { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+
+
+
+
+<div class="hero">
+  <div class="hero-inner">
+  <h1>Global Index Fund<span>Cheat Sheet</span></h1>
+  <p>A comparison of the top global index funds for UK investors.</p>
+  <p style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:-8px">Data last updated: 9 April 2026</p>
+  <div class="nfa-badge">⚠️ This is not financial advice</div>
+  <div class="hero-cards">
+    <a href="https://www.makingmoneysimple.co.uk/how-i-can-help-individual" target="_blank" class="hero-card">
+      <div class="hero-card-icon">📋</div>
+      <div class="hero-card-body">
+        <div class="hero-card-title" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Click here to see exactly how I can help you out</div>
+      </div>
+      <span class="hero-card-arrow">↗</span>
+    </a>
+  </div>
+  </div>
+</div>
+
+<!-- NOTES -->
+<div class="collapsible-strip strip-notes">
+  <button class="strip-toggle" id="notesToggle" onclick="toggle('notesToggle','notesBody')">
+    <span>📌</span> How to use this - key concepts explained
+    <span class="arrow">▼</span>
+  </button>
+  <div class="strip-body" id="notesBody">
+    <div class="notes-grid notes-grid-3">
+      <div class="note-card">
+        <strong>What is an Index?</strong>
+        An index tracks a basket of companies (e.g. FTSE All-World). See the indices breakdown below for what each one tracks.
+      </div>
+      <div class="note-card">
+        <strong>What is a Fund?</strong>
+        A fund is provided by a fund manager (e.g. Vanguard, iShares, etc.) that tracks an index. Multiple funds can track the same index, e.g. both VWRP and FWRG track the FTSE All-World index.
+      </div>
+      <div class="note-card">
+        <strong>ETF vs Mutual Fund</strong>
+        ETFs and Mutual Funds can both track an index, e.g. VWRP (ETF) and HSBC FTSE All-World (Mutual Fund) both track the FTSE All-World index. ETFs are more widely available across platforms, so most people will use these.
+      </div>
+    </div>
+    <div class="notes-grid notes-grid-2" style="margin-top:12px">
+      <div class="note-card">
+        <strong>Key considerations</strong>
+        <span style="display:block;margin-top:6px"><strong style="color:var(--dark);font-size:12px">💸 Fees (OCF/TER)</strong> The ongoing charge you pay to invest in a fund.</span>
+        <span style="display:block;margin-top:8px"><strong style="color:var(--dark);font-size:12px">🌍 Diversification</strong> More stocks = more diversification. Truly global funds include developed markets and emerging markets.</span>
+      </div>
+      <div class="note-card">
+        <strong>Other considerations</strong>
+        <ul style="margin-top:8px;padding-left:16px;display:flex;flex-direction:column;gap:5px;font-size:13px;color:var(--mid);line-height:1.5">
+          <li>Bid/ask spreads</li>
+          <li>Tracking error</li>
+          <li>Replication method</li>
+          <li>Fund domicile</li>
+          <li>Fund availability on your platform</li>
+          <li>Currency denomination</li>
+          <li>Share price (if the platform you're using doesn't offer fractional shares)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- WHY GLOBAL -->
+<div class="collapsible-strip strip-why">
+  <button class="strip-toggle" id="whyToggle" onclick="toggle('whyToggle','whyBody')">
+    <span>🌍</span> Why invest globally? The case for a global index fund
+    <span class="arrow">▼</span>
+  </button>
+  <div class="strip-body" id="whyBody">
+    <div class="why-grid">
+
+      <div class="why-card">
+        <div class="why-card-title"><span class="why-card-icon">🌍</span><strong>Own the world in one fund</strong></div>
+        <p>A single global fund lets you "own the world" - thousands of stocks across every country, sector and industry. It includes 85%+ of the total investible world (depending on the fund), all within one simple investment. Global index funds charge as little as 0.07% per year.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-card-title"><span class="why-card-icon">🔄</span><strong>It follows the money automatically</strong></div>
+        <p>The best performing country, industry and companies regularly changes. For example, Japan made up 45% of the global stock market in 1989. Now it's only 6%. A global fund takes all guesswork out of the equation. It self-cleanses as countries, industries and companies perform well or poorly over time.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-card-title"><span class="why-card-icon">😴</span><strong>Set it and forget it</strong></div>
+        <p>Build your wealth slowly, passively and on autopilot as the global stock market grows over time. Passive investing, where you simply track an index, usually gives better returns than active investing or stock picking the large majority of the time. No need to read financial reports, try to pick stocks or try to time the market.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-card-title"><span class="why-card-icon">✅</span><strong>Key criteria to look for in a global fund</strong></div>
+        <ul style="margin-top:6px;padding-left:16px;display:flex;flex-direction:column;gap:5px;font-size:13px;color:var(--mid);line-height:1.5">
+          <li>Well-established fund manager</li>
+          <li>Diversification. The more stocks, the better</li>
+          <li>Low total fund fees (ongoing fee + transaction fee)</li>
+          <li>Minimum $1bn AUM</li>
+          <li>Accumulation share class - to auto-reinvest dividends (my personal preference)</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- INDICES BREAKDOWN -->
+<div class="collapsible-strip strip-indices">
+  <button class="strip-toggle" id="indicesToggle" onclick="toggle('indicesToggle','indicesBody')">
+    <span>📊</span> Indices breakdown - what each index tracks
+    <span class="arrow">▼</span>
+  </button>
+  <div class="strip-body" id="indicesBody">
+    <div class="indices-grid">
+
+      <div class="index-card">
+        <div class="index-card-header">
+          <span class="index-pill index-ftse-aw">FTSE All-World</span>
+          <span class="global-badge is-global">🌍 Truly Global</span>
+        </div>
+        <div class="index-card-body">
+          Covers stocks across developed and emerging markets. One of the most popular indices for global investing.
+          <br><br>
+          <span class="stat">Developed + Emerging</span><span class="stat">Large &amp; Mid Cap</span>
+          <br><strong style="font-size:12px;color:var(--dark)">Funds:</strong> VWRP, FWRG, HSBC FTSE All World (Mutual Fund)
+        </div>
+      </div>
+
+      <div class="index-card">
+        <div class="index-card-header">
+          <span class="index-pill index-ftse-gac">FTSE Global All Cap</span>
+          <span class="global-badge is-global">🌍 Truly Global</span>
+        </div>
+        <div class="index-card-body">
+          The broadest FTSE index - extends FTSE All-World to also include small-cap stocks.
+          <br><br>
+          <span class="stat">Developed + Emerging</span><span class="stat">Large, Mid &amp; Small Cap</span>
+          <br><strong style="font-size:12px;color:var(--dark)">Funds:</strong> Vanguard FTSE Global All Cap (Mutual Fund)
+        </div>
+      </div>
+
+      <div class="index-card">
+        <div class="index-card-header">
+          <span class="index-pill index-ftse-hdy">FTSE All-World High Dividend Yield</span>
+          <span class="global-badge not-global">⚠️ Not truly global</span>
+        </div>
+        <div class="index-card-body">
+          A subset of FTSE All-World screening for above-average dividend paying stocks. As it actively selects for dividends rather than tracking the full market, it is not a pure passive index fund.
+          <br><br>
+          <span class="stat">Developed + Emerging</span><span class="stat">Large &amp; Mid Cap</span>
+          <br><strong style="font-size:12px;color:var(--dark)">Funds:</strong> VHYG
+        </div>
+      </div>
+
+      <div class="index-card">
+        <div class="index-card-header">
+          <span class="index-pill index-ftse-dev">FTSE Developed World</span>
+          <span class="global-badge not-global">⚠️ Not truly global</span>
+        </div>
+        <div class="index-card-body">
+          FTSE index that just tracks developed markets, no emerging markets exposure.
+          <br><br>
+          <span class="stat">Developed only</span><span class="stat">Large &amp; Mid Cap</span>
+          <br><strong style="font-size:12px;color:var(--dark)">Funds:</strong> VHVG
+        </div>
+      </div>
+
+      <div class="index-card">
+        <div class="index-card-header">
+          <span class="index-pill index-msci-acwi">MSCI ACWI</span>
+          <span class="global-badge is-global">🌍 Truly Global</span>
+        </div>
+        <div class="index-card-body">
+          MSCI's equivalent of FTSE All-World. One of the most popular indices for global investing.
+          <br><br>
+          <span class="stat">Developed + Emerging</span><span class="stat">Large &amp; Mid Cap</span>
+          <br><strong style="font-size:12px;color:var(--dark)">Funds:</strong> SSAC, ACWI
+        </div>
+      </div>
+
+      <div class="index-card">
+        <div class="index-card-header">
+          <span class="index-pill index-msci-acwi">MSCI ACWI IMI</span>
+          <span class="global-badge is-global">🌍 Truly Global</span>
+        </div>
+        <div class="index-card-body">
+          The broadest MSCI index and similar to the FTSE Global All Cap - extends ACWI to include small-cap stocks. IMI = Investable Market Index. Currently no GBP-listed version available.
+          <br><br>
+          <span class="stat">Developed + Emerging</span><span class="stat">Large, Mid &amp; Small Cap</span>
+          <br><strong style="font-size:12px;color:var(--dark)">Funds:</strong> IMID (listed in USD, not GBP)
+        </div>
+      </div>
+
+      <div class="index-card">
+        <div class="index-card-header">
+          <span class="index-pill index-msci-world">MSCI World</span>
+          <span class="global-badge not-global">⚠️ Not truly global</span>
+        </div>
+        <div class="index-card-body">
+          Despite the name, developed markets only - no emerging markets exposure.
+          <br><br>
+          <span class="stat">Developed only</span><span class="stat">Large &amp; Mid Cap</span>
+          <br><strong style="font-size:12px;color:var(--dark)">Funds:</strong> SWDA, MXWS, SWLD, HMWS, WRDA, Fidelity Index World (Mutual Fund)
+        </div>
+      </div>
+
+      <div class="index-card">
+        <div class="index-card-header">
+          <span class="index-pill index-solactive" style="display:block;margin-bottom:6px">Solactive GBS Global Markets Large &amp; Mid Cap</span>
+          <span class="global-badge is-global">🌍 Truly Global</span>
+        </div>
+        <div class="index-card-body">
+          A lower-cost alternative to FTSE All-World/MSCI ACWI. Solactive's cheaper licensing costs allow funds to track this index at a lower fee.
+          <br><br>
+          <span class="stat">Developed + Emerging</span><span class="stat">Large &amp; Mid Cap</span>
+          <br><strong style="font-size:12px;color:var(--dark)">Funds:</strong> PACW
+        </div>
+      </div>
+
+      <div class="index-card">
+        <div class="index-card-header">
+          <span class="index-pill index-solactive" style="display:block;margin-bottom:6px">Solactive Core Developed Markets Large &amp; Mid Cap</span>
+          <span class="global-badge not-global">⚠️ Not truly global</span>
+        </div>
+        <div class="index-card-body">
+          Solactive's developed-markets-only index. No emerging markets.
+          <br><br>
+          <span class="stat">Developed only</span><span class="stat">Large &amp; Mid Cap</span>
+          <br><strong style="font-size:12px;color:var(--dark)">Funds:</strong> LGGG
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<main>
+
+  <!-- FUND RANKING -->
+  <div class="section-block">
+    <div class="ranking-toggle-row">
+      <button class="ranking-toggle-btn" onclick="toggleRanking(this)">
+        🏆 Global Fund Ranking <span class="ranking-toggle-arrow">▼</span>
+      </button>
+      <span class="ranking-nfa">Not financial advice</span>
+    </div>
+    <div class="ranking-collapsible" id="rankingCollapsible" style="display:none">
+      <div class="ranking-inner">
+
+
+    <div class="ranking-section-label">Index ETFs</div>
+    <div class="ranking-cards">
+
+      <div class="ranking-card">
+        <div class="ranking-medal">🥇</div>
+        <div class="ranking-card-body">
+          <div class="ranking-fund">ACWI <span class="ranking-provider">State Street</span></div>
+          <div class="ranking-reasons">
+            <div class="ranking-reason">0.12% fee · 2,200+ stocks · $11bn+ AUM</div>
+            <ul class="ranking-bullets">
+              <li>Lowest fee accumulation global fund</li>
+              <li>Very diversified and a huge fund ($8bn+ AUM)</li>
+              <li>Want the top pick overall? Go with this fund</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="ranking-card">
+        <div class="ranking-medal">🥈</div>
+        <div class="ranking-card-body">
+          <div class="ranking-fund">VWRP <span class="ranking-provider">Vanguard</span></div>
+          <div class="ranking-reasons">
+            <div class="ranking-reason">0.19% fee · 3,700+ stocks · $35bn+ AUM</div>
+            <ul class="ranking-bullets">
+              <li>Largest 'truly global' fund ($35.7bn AUM)</li>
+              <li>Massively diversified from the biggest brand name</li>
+              <li>Want the biggest fund with a long track record? Go with this fund</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="ranking-card">
+        <div class="ranking-medal">🥉</div>
+        <div class="ranking-card-body">
+          <div class="ranking-fund">PACW <span class="ranking-provider">Amundi</span></div>
+          <div class="ranking-reasons">
+            <div class="ranking-reason">0.07% fee · 3,300+ stocks · $5bn+ AUM</div>
+            <ul class="ranking-bullets">
+              <li>Lowest fee global fund overall</li>
+              <li>Massively diversified, but less of a track record (launched 2024)</li>
+              <li>Income only, currently no Accumulation share class</li>
+              <li>Want the newcomer with the lowest fee? Go with this fund</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="ranking-section-label" style="margin-top:20px">Mutual Index Funds</div>
+    <div class="ranking-cards">
+
+      <div class="ranking-card">
+        <div class="ranking-medal">🥇</div>
+        <div class="ranking-card-body">
+          <div class="ranking-fund">FTSE Global All Cap <span class="ranking-provider">Vanguard</span></div>
+          <div class="ranking-reasons">
+            <div class="ranking-reason">0.23% fee · 7,200+ stocks · $9bn+ AUM</div>
+            <ul class="ranking-bullets">
+              <li>The most diversified global fund available for UK investors</li>
+              <li>Includes small cap stocks, covering ~98% of the total investible universe</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <p style="font-size:13px;font-weight:600;color:#8a4a00;background:#fff8ee;border:1.5px solid #f0d090;border-radius:8px;padding:10px 14px;margin-top:16px;display:inline-block">⚠️ Not financial advice. Just my personal opinion. Always do your own research.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="filter-row">
+    <span class="filter-label">Filter by</span>
+    <button class="pill active" onclick="filter('all', this)">All Funds</button>
+    <button class="pill global-pill" onclick="filter('global', this)">🌍 Truly Global</button>
+    <button class="pill" onclick="filter('developed', this)">Developed Markets Only</button>
+  </div>
+
+  <!-- ETF SECTION -->
+  <div class="section-block" id="etf-section">
+    <div class="section-header">
+      <div class="section-title">Index ETFs</div>
+      <div class="section-sub">Exchange-traded funds - available on most platforms</div>
+    </div>
+    <div class="scroll-hint">Scroll to see more →</div>
+    <div class="table-wrap">
+      <table id="etf-table">
+      <colgroup>
+        <col style="width:110px">
+        <col style="width:130px">
+        <col style="width:130px">
+        <col style="width:170px">
+        <col style="width:90px">
+        <col style="width:90px">
+        <col style="width:90px">
+        <col style="width:90px">
+        <col>
+      </colgroup>
+        <thead>
+          <tr>
+            <th>Ticker</th><th>Provider</th><th>Share Class</th><th>Index</th>
+            <th class="sortable" onclick="sortTable('etf-table', 4, this)" data-type="pct">Fee (OCF)<span class="sort-icon"></span></th><th class="sortable" onclick="sortTable('etf-table', 5, this)" data-type="num">Holdings<span class="sort-icon"></span></th><th class="sortable" onclick="sortTable('etf-table', 6, this)" data-type="money">AUM (USD)<span class="sort-icon"></span></th><th>Fund Page</th><th style="min-width:300px">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-index="ftse-aw" data-class="acc" data-fee="0.19" data-global="true">
+            <td class="ticker-cell">VWRP</td>
+            <td><div class="provider-cell"><img class="provider-logo" src="https://www.google.com/s2/favicons?domain=vanguard.co.uk&sz=64" alt="Vanguard" onerror="this.style.display='none'"><span class="provider-name">Vanguard</span></div></td>
+            <td><span class="acc">Accumulation</span><br><span class="class-tag">Income: VWRL</span></td>
+            <td><span class="index-pill index-ftse-aw">FTSE All-World</span></td>
+            <td class="fee-cell">0.19%</td>
+            <td class="holdings-cell">3,798</td>
+            <td class="aum-cell">$35.7bn</td>
+            <td><a class="link-btn" href="https://www.vanguardinvestor.co.uk/investments/vanguard-ftse-all-world-ucits-etf-usd-accumulating/overview" target="_blank">View ↗</a></td>
+            <td class="notes-cell">Fee reduced from 0.22% to 0.19% in October 2025</td>
+          </tr>
+          <tr data-index="ftse-aw" data-class="acc" data-fee="0.15" data-global="true">
+            <td class="ticker-cell">FWRG</td>
+            <td><div class="provider-cell"><img class="provider-logo" src="https://www.google.com/s2/favicons?domain=invesco.com&sz=64" alt="Invesco" onerror="this.style.display='none'"><span class="provider-name">Invesco</span></div></td>
+            <td><span class="acc">Accumulation</span><br><span class="class-tag">Income: FTWG</span></td>
+            <td><span class="index-pill index-ftse-aw">FTSE All-World</span></td>
+            <td class="fee-cell">0.15%</td>
+            <td class="holdings-cell">2,320</td>
+            <td class="aum-cell">$3.3bn</td>
+            <td><a class="link-btn" href="https://www.invesco.com/uk/en/financial-products/etfs/invesco-ftse-all-world-ucits-etf-acc.html" target="_blank">View ↗</a></td>
+            <td class="notes-cell">Another FTSE All-World ETF. But a shorter track record, ETF launched in June 2023</td>
+          </tr>
+          <tr data-index="ftse-hdy" data-class="acc" data-fee="0.29" data-global="true">
+            <td class="ticker-cell">VHYG</td>
+            <td><div class="provider-cell"><img class="provider-logo" src="https://www.google.com/s2/favicons?domain=vanguard.co.uk&sz=64" alt="Vanguard" onerror="this.style.display='none'"><span class="provider-name">Vanguard</span></div></td>
+            <td><span class="acc">Accumulation</span><br><span class="class-tag">Income: VHYL</span></td>
+            <td><span class="index-pill index-ftse-hdy">FTSE All-World High Dividend Yield</span></td>
+            <td class="fee-cell">0.29%</td>
+            <td class="holdings-cell">2,275</td>
+            <td class="aum-cell">$2.3bn</td>
+            <td><a class="link-btn" href="https://www.vanguardinvestor.co.uk/investments/vanguard-ftse-all-world-high-dividend-yield-ucits-etf-usd-accumulating/overview" target="_blank">View ↗</a></td>
+            <td class="notes-cell">Specifically invests in dividend-paying stocks</td>
+          </tr>
+          <tr data-index="ftse-dev" data-class="acc" data-fee="0.12" data-global="false">
+            <td class="ticker-cell">VHVG</td>
+            <td><div class="provider-cell"><img class="provider-logo" src="https://www.google.com/s2/favicons?domain=vanguard.co.uk&sz=64" alt="Vanguard" onerror="this.style.display='none'"><span class="provider-name">Vanguard</span></div></td>
+            <td><span class="acc">Accumulation</span><br><span class="class-tag">Income: VEVE</span></td>
+            <td><span class="index-pill index-ftse-dev">FTSE Developed World</span></td>
+            <td class="fee-cell">0.12%</td>
+            <td class="holdings-cell">1,996</td>
+            <td class="aum-cell">$5.7bn</td>
+            <td><a class="link-btn" href="https://www.vanguardinvestor.co.uk/investments/vanguard-ftse-developed-world-ucits-etf-usd-accumulating/overview" target="_blank">View ↗</a></td>
+            <td class="notes-cell">⚠️ Not truly global - excludes emerging market stocks</td>
+          </tr>
+          <tr data-index="msci-acwi" data-class="acc" data-fee="0.17" data-global="true">
+            <td class="ticker-cell">IMID</td>
+            <td><div class="provider-cell"><img class="provider-logo" src="https://www.google.com/s2/favicons?domain=ssga.com&sz=64" alt="State Street" onerror="this.style.display='none'"><span class="provider-name">State Street</span></div></td>
+            <td><span class="acc">Accumulation</span></td>
+            <td><span class="index-pill index-msci-acwi">MSCI ACWI IMI</span></td>
+            <td class="fee-cell">0.17%</td>
+            <td class="holdings-cell">4,606</td>
+            <td class="aum-cell">$5.5bn</td>
+            <td><a class="link-btn" href="https://www.ssga.com/ch/en_gb/intermediary/etfs/spdr-msci-all-country-world-investable-market-ucits-etf-acc-spyi-gy" target="_blank">View ↗</a></td>
+            <td class="notes-cell">Most diversified global ETF as invests in small cap stocks. However, only listed in USD &amp; EUR - no GBP version yet</td>
+          </tr>
+          <tr data-index="msci-acwi" data-class="acc" data-fee="0.12" data-global="true">
+            <td class="ticker-cell">ACWI</td>
+            <td><div class="provider-cell"><img class="provider-logo" src="https://www.google.com/s2/favicons?domain=ssga.com&sz=64" alt="State Street" onerror="this.style.display='none'"><span class="provider-name">State Street</span></div></td>
+            <td><span class="acc">Accumulation</span></td>
+            <td><span class="index-pill index-msci-acwi">MSCI ACWI</span></td>
+            <td class="fee-cell">0.12%</td>
+            <td class="holdings-cell">2,285</td>
+            <td class="aum-cell">$11.6bn</td>
+            <td><a class="link-btn" href="https://www.ssga.com/uk/en_gb/intermediary/etfs/spdr-msci-all-country-world-ucits-etf-acc-spyy-gy" target="_blank">View ↗</a></td>
+            <td class="notes-cell">Lowest fee accumulation global fund. Not to be confused with 'iShares MSCI ACWI ETF' (ticker is also ACWI) listed on the Nasdaq</td>
+          </tr>
+          <tr data-index="msci-acwi" data-class="acc" data-fee="0.20" data-global="true">
+            <td class="ticker-cell">SSAC</td>
+            <td><div class="provider-cell"><img class="provider-logo" src="https://www.google.com/s2/favicons?domain=ishares.com&sz=64" alt="iShares" onerror="this.style.display='none'"><span class="provider-name">iShares</span></div></td>
+            <td><span class="acc">Accumulation</span></td>
+            <td><span class="index-pill index-msci-acwi">MSCI ACWI</span></td>
+            <td class="fee-cell">0.20%</td>
+            <td class="holdings-cell">1,729</td>
+            <td class="aum-cell">$28.5bn</td>
+            <td><a class="link-btn" href="https://www.ishares.com/uk/individual/en/products/251850/ishares-msci-acwi-ucits-etf" target="_blank">View ↗</a></td>
+            <td class="notes-cell">Another ETF that tracks MSCI ACWI. But 'ACWI' (by State Street) is cheaper</td>
+          </tr>
+          <tr data-index="msci-world" data-class="acc" data-fee="0.20" data-global="false">
+            <td class="ticker-cell">SWDA</td>
+            <td><div class="provider-cell"><img class="provider-logo" src="https://www.google.com/s2/favicons?domain=ishares.com&sz=64" alt="iShares" onerror="this.style.display='none'"><span class="provider-name">iShares</span></div></td>
+            <td><span class="acc">Accumulation</span><br><span class="class-tag">Income: IWRD</span></td>
+            <td><span class="index-pill index-msci-world">MSCI World</span></td>
+            <td class="fee-cell">0.20%</td>
+            <td class="holdings-cell">1,358</td>
+            <td class="aum-cell">$133.4bn</td>
+            <td><a class="link-btn" href="https://www.ishares.com/uk/individual/en/products/251882/ishares-msci-world-ucits-etf-acc-fund" target="_blank">View ↗</a></td>
+            <td class="notes-cell">⚠️ Not truly global - excludes emerging market stocks</td>
+          </tr>
+          <tr data-index="msci-world" data-class="acc" data-fee="0.19" data-global="false">
+            <td class="ticker-cell">MXWS</td>
+            <td><div class="provider-cell"><img class="provider-logo" src="https://www.google.com/s2/favicons?domain=invesco.com&sz=64" alt="Invesco" onerror="this.style.display='none'"><span class="provider-name">Invesco</span></div></td>
+            <td><span class="acc">Accumulation</span></td>
+            <td><span class="index-pill index-msci-world">MSCI World</span></td>
+            <td class="fee-cell">0.19%</td>
+            <td class="holdings-cell">1,319</td>
+            <td class="aum-cell">$6.8bn</td>
+            <td><a class="link-btn" href="https://www.invesco.com/uk/en/financial-products/etfs/invesco-msci-world-ucits-etf-acc.html" target="_blank">View ↗</a></td>
+            <td class="notes-cell">⚠️ Not truly global - excludes emerging market stocks</td>
+          </tr>
+          <tr data-index="msci-world" data-class="acc" data-fee="0.12" data-global="false">
+            <td class="ticker-cell">SWLD</td>
+            <td><div class="provider-cell"><img class="provider-logo" src="https://www.google.com/s2/favicons?domain=ssga.com&sz=64" alt="State Street" onerror="this.style.display='none'"><span class="provider-name">State Street</span></div></td>
+            <td><span class="acc">Accumulation</span></td>
+            <td><span class="index-pill index-msci-world">MSCI World</span></td>
+            <td class="fee-cell">0.12%</td>
+            <td class="holdings-cell">1,295</td>
+            <td class="aum-cell">$18.5bn</td>
+            <td><a class="link-btn" href="https://www.ssga.com/ch/en_gb/intermediary/etfs/spdr-msci-world-ucits-etf-sppw-gy" target="_blank">View ↗</a></td>
+            <td class="notes-cell">⚠️ Not truly global - excludes emerging market stocks</td>
+          </tr>
+          <tr data-index="msci-world" data-class="acc" data-fee="0.15" data-global="false">
+            <td class="ticker-cell">HMWS</td>
+            <td><div class="provider-cell"><img class="provider-logo" src="https://www.google.com/s2/favicons?domain=assetmanagement.hsbc.co.uk&sz=64" alt="HSBC" onerror="this.style.display='none'"><span class="provider-name">HSBC</span></div></td>
+            <td><span class="acc">Accumulation</span><br><span class="class-tag">Income: HMWO</span></td>
+            <td><span class="index-pill index-msci-world">MSCI World</span></td>
+            <td class="fee-cell">0.15%</td>
+            <td class="holdings-cell">1,271</td>
+            <td class="aum-cell">$16.4bn</td>
+            <td><a class="link-btn" href="https://www.assetmanagement.hsbc.co.uk/en/individual-investor/funds/ie000uqnd7h4" target="_blank">View ↗</a></td>
+            <td class="notes-cell">⚠️ Not truly global - excludes emerging market stocks</td>
+          </tr>
+          <tr data-index="msci-world" data-class="acc" data-fee="0.06" data-global="false">
+            <td class="ticker-cell">WRDA</td>
+            <td><div class="provider-cell"><img class="provider-logo" src="https://www.google.com/s2/favicons?domain=ubs.com&sz=64" alt="UBS" onerror="this.style.display='none'"><span class="provider-name">UBS</span></div></td>
+            <td><span class="acc">Accumulation</span></td>
+            <td><span class="index-pill index-msci-world">MSCI World</span></td>
+            <td class="fee-cell">0.06%</td>
+            <td class="holdings-cell">1,311</td>
+            <td class="aum-cell">$11.9bn</td>
+            <td><a class="link-btn" href="https://www.ubs.com/uk/en/assetmanagement/funds/etf/ie00b7kq7b66-ubs-core-msci-world-ucits-etf-pd001.html" target="_blank">View ↗</a></td>
+            <td class="notes-cell">⚠️ Not truly global - excludes emerging market stocks</td>
+          </tr>
+          <tr data-index="solactive" data-class="inc" data-fee="0.07" data-global="true">
+            <td class="ticker-cell">PACW</td>
+            <td><div class="provider-cell"><img class="provider-logo" src="https://www.google.com/s2/favicons?domain=amundi.com&sz=64" alt="Amundi" onerror="this.style.display='none'"><span class="provider-name">Amundi</span></div></td>
+            <td><span class="inc">Income</span></td>
+            <td><span class="index-pill index-solactive">Solactive GBS Global Mkts L&amp;M Cap</span></td>
+            <td class="fee-cell">0.07%</td>
+            <td class="holdings-cell">3,395</td>
+            <td class="aum-cell">$5.7bn</td>
+            <td><a class="link-btn" href="https://www.amundietf.co.uk/en/professional/products/equity/amundi-prime-all-country-world-ucits-etf-dist/ie0009hf1mk9" target="_blank">View ↗</a></td>
+            <td class="notes-cell">Lowest fee global ETF. No accumulation share class available</td>
+          </tr>
+          <tr data-index="solactive" data-class="acc" data-fee="0.10" data-global="false">
+            <td class="ticker-cell">LGGG</td>
+            <td><div class="provider-cell"><img class="provider-logo" src="https://www.google.com/s2/favicons?domain=legalandgeneral.com&sz=64" alt="L&G" onerror="this.style.display='none'"><span class="provider-name">L&G</span></div></td>
+            <td><span class="acc">Accumulation</span></td>
+            <td><span class="index-pill index-solactive">Solactive Core Dev. Mkts L&amp;M Cap</span></td>
+            <td class="fee-cell">0.10%</td>
+            <td class="holdings-cell">1,381</td>
+            <td class="aum-cell">$1.1bn</td>
+            <td><a class="link-btn" href="https://fundcentres.landg.com/en/uk/institutional/fund-centre/ETF/Global-Equity/" target="_blank">View ↗</a></td>
+            <td class="notes-cell">⚠️ Not truly global - excludes emerging market stocks</td>
+          </tr>
+        </thead>
+      </table>
+      <div class="no-results" id="etf-no-results">No ETFs match this filter.</div>
+    </div>
+  </div>
+
+  <!-- MUTUAL FUND SECTION -->
+  <div class="section-block" id="mutual-section">
+    <div class="section-header">
+      <div class="section-title">Mutual Index Funds</div>
+      <div class="section-sub">Traditional mutual funds - generally available on fewer platforms</div>
+    </div>
+    <div class="scroll-hint">Scroll to see more →</div>
+    <div class="table-wrap">
+      <table id="mutual-table">
+      <colgroup>
+        <col style="width:110px">
+        <col style="width:130px">
+        <col style="width:130px">
+        <col style="width:170px">
+        <col style="width:90px">
+        <col style="width:90px">
+        <col style="width:90px">
+        <col style="width:90px">
+        <col>
+      </colgroup>
+        <thead>
+          <tr>
+            <th>Fund Name</th><th>Provider</th><th>Share Class</th><th>Index</th>
+            <th class="sortable" onclick="sortTable('mutual-table', 4, this)" data-type="pct">Fee (OCF)<span class="sort-icon"></span></th><th class="sortable" onclick="sortTable('mutual-table', 5, this)" data-type="num">Holdings<span class="sort-icon"></span></th><th class="sortable" onclick="sortTable('mutual-table', 6, this)" data-type="money">AUM (USD)<span class="sort-icon"></span></th><th>Fund Page</th><th style="min-width:300px">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-index="ftse-gac" data-class="acc" data-fee="0.23" data-global="true">
+            <td class="ticker-cell">FTSE Global All Cap</td>
+            <td><div class="provider-cell"><img class="provider-logo" src="https://www.google.com/s2/favicons?domain=vanguard.co.uk&sz=64" alt="Vanguard" onerror="this.style.display='none'"><span class="provider-name">Vanguard</span></div></td>
+            <td><span class="acc">Accumulation</span><br><span class="class-tag">Income available</span></td>
+            <td><span class="index-pill index-ftse-gac">FTSE Global All Cap</span></td>
+            <td class="fee-cell">0.23%</td>
+            <td class="holdings-cell">7,213</td>
+            <td class="aum-cell">$9.9bn</td>
+            <td><a class="link-btn" href="https://www.vanguardinvestor.co.uk/investments/vanguard-ftse-global-all-cap-index-fund-gbp-acc/overview" target="_blank">View ↗</a></td>
+            <td class="notes-cell">Most diversified global fund as invests in small cap stocks. But not widely available on all platforms</td>
+          </tr>
+          <tr data-index="ftse-aw" data-class="acc" data-fee="0.13" data-global="true">
+            <td class="ticker-cell">HSBC FTSE All World</td>
+            <td><div class="provider-cell"><img class="provider-logo" src="https://www.google.com/s2/favicons?domain=assetmanagement.hsbc.co.uk&sz=64" alt="HSBC" onerror="this.style.display='none'"><span class="provider-name">HSBC</span></div></td>
+            <td><span class="acc">Accumulation</span><br><span class="class-tag">Income available</span></td>
+            <td><span class="index-pill index-ftse-aw">FTSE All-World</span></td>
+            <td class="fee-cell">0.13%</td>
+            <td class="holdings-cell">3,479</td>
+            <td class="aum-cell">$8.3bn</td>
+            <td><a class="link-btn" href="https://www.assetmanagement.hsbc.co.uk/en/individual-investor/funds/gb00bnm3wj04" target="_blank">View ↗</a></td>
+            <td class="notes-cell">Lower fee than both VWRP and FWRG ETFs</td>
+          </tr>
+          <tr data-index="msci-world" data-class="acc" data-fee="0.12" data-global="false">
+            <td class="ticker-cell">Fidelity Index World</td>
+            <td><div class="provider-cell"><img class="provider-logo" src="https://www.google.com/s2/favicons?domain=fidelity.co.uk&sz=64" alt="Fidelity" onerror="this.style.display='none'"><span class="provider-name">Fidelity</span></div></td>
+            <td><span class="acc">Accumulation</span><br><span class="class-tag">Income available</span></td>
+            <td><span class="index-pill index-msci-world">MSCI World</span></td>
+            <td class="fee-cell">0.12%</td>
+            <td class="holdings-cell">1,318</td>
+            <td class="aum-cell">$19.4bn</td>
+            <td><a class="link-btn" href="https://www.fidelity.co.uk/factsheet-data/factsheet/GB00BJS8SJ34-fidelity-index-world-fund-p-acc/key-statistics" target="_blank">View ↗</a></td>
+            <td class="notes-cell">⚠️ Not truly global - excludes emerging market stocks</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="no-results" id="mutual-no-results">No mutual funds match this filter.</div>
+    </div>
+  </div>
+
+  <!-- KEY -->
+  <div class="key-row">
+    <div class="key-title">Key</div>
+    <div class="key-item"><span style="color:#3a8a5f;font-weight:600">Accumulation</span> = auto-reinvests dividends back into the fund</div>
+    <div class="key-item"><span style="color:#c07030;font-weight:600">Income</span> = pays dividends out to you</div>
+    <div class="key-item"><span class="global-badge is-global">🌍 Truly Global</span> = Developed and emerging markets stocks &nbsp;&nbsp; <span class="global-badge not-global">⚠️ Not truly global</span> = Excludes emerging markets. Developed market stocks only</div>
+  </div>
+
+</main>
+
+<footer>
+  <strong>Disclaimers:</strong> When investing, your capital is at risk. Past performance does not guarantee future results.<br>This is not financial advice.<br>Please reach out if any data needs updating - we offer no guarantees of 100% accuracy.
+</footer>
+
+<script>
+  function toggle(btnId, bodyId) {
+    document.getElementById(btnId).classList.toggle('open');
+    document.getElementById(bodyId).classList.toggle('open');
+  }
+
+  function filter(type, el) {
+    document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.pill').forEach(p => {
+      if (p.getAttribute('onclick') === `filter('${type}', this)`) p.classList.add('active');
+    });
+
+    const etfRows = document.querySelectorAll('#etf-table tbody tr');
+    const mutualRows = document.querySelectorAll('#mutual-table tbody tr');
+    let etfVisible = 0, mutualVisible = 0;
+
+    function matchRow(row) {
+      const idx = row.dataset.index;
+      const cls = row.dataset.class;
+      const fee = parseFloat(row.dataset.fee);
+      const isGlobal = row.dataset.global === 'true';
+      if (type === 'all') return true;
+      if (type === 'ftse-aw') return idx === 'ftse-aw';
+      if (type === 'msci-acwi') return idx === 'msci-acwi';
+      if (type === 'msci-world') return idx === 'msci-world';
+      if (type === 'low-fee') return fee <= 0.12;
+      if (type === 'acc') return cls === 'acc';
+      if (type === 'global') return isGlobal;
+      if (type === 'developed') return !isGlobal;
+      return false;
+    }
+
+    if (type === 'mutual') {
+      document.getElementById('etf-section').style.display = 'none';
+      document.getElementById('mutual-section').style.display = 'block';
+      etfRows.forEach(r => r.classList.add('hidden'));
+      mutualRows.forEach(r => { r.classList.remove('hidden'); mutualVisible++; });
+    } else {
+      document.getElementById('etf-section').style.display = 'block';
+      document.getElementById('mutual-section').style.display = 'block';
+      etfRows.forEach(r => {
+        if (matchRow(r)) { r.classList.remove('hidden'); etfVisible++; }
+        else r.classList.add('hidden');
+      });
+      mutualRows.forEach(r => {
+        if (matchRow(r)) { r.classList.remove('hidden'); mutualVisible++; }
+        else r.classList.add('hidden');
+      });
+    }
+
+    document.getElementById('etf-no-results').style.display =
+      (etfVisible === 0 && type !== 'mutual') ? 'block' : 'none';
+    document.getElementById('mutual-no-results').style.display =
+      mutualVisible === 0 ? 'block' : 'none';
+  }
+
+  function toggleRanking(btn) {
+    const el = document.getElementById('rankingCollapsible');
+    const arrow = btn.querySelector('.ranking-toggle-arrow');
+    const open = el.style.display === 'none';
+    el.style.display = open ? 'block' : 'none';
+    arrow.textContent = open ? '▲' : '▼';
+  }
+
+  // Sort medals to top on page load
+  function medalOrder(row) {
+    const ticker = row.querySelector('.ticker-cell');
+    if (!ticker) return 99;
+    const text = ticker.textContent;
+    if (text.includes('🥇')) return 1;
+    if (text.includes('🥈')) return 2;
+    if (text.includes('🥉')) return 3;
+    return 99;
+  }
+
+  function sortTableByMedals(tableId) {
+    const tbody = document.querySelector('#' + tableId + ' tbody');
+    if (!tbody) return;
+    const rows = Array.from(tbody.querySelectorAll('tr'));
+    rows.sort((a, b) => medalOrder(a) - medalOrder(b));
+    rows.forEach(r => tbody.appendChild(r));
+  }
+
+  // Column sort
+  const sortState = {};
+  function sortTable(tableId, colIndex, th) {
+    const table = document.getElementById(tableId);
+    const tbody = table.querySelector('tbody');
+    const rows = Array.from(tbody.querySelectorAll('tr'));
+    const key = tableId + ':' + colIndex;
+    const currentDir = sortState[key] || 'none';
+    const newDir = currentDir === 'asc' ? 'desc' : 'asc';
+    sortState[key] = newDir;
+
+    // Update header classes
+    table.querySelectorAll('th.sortable').forEach(t => {
+      t.classList.remove('sort-asc', 'sort-desc');
+    });
+    th.classList.add(newDir === 'asc' ? 'sort-asc' : 'sort-desc');
+
+    const dataType = th.dataset.type;
+
+    function parseVal(row) {
+      const cell = row.cells[colIndex];
+      if (!cell) return 0;
+      const text = cell.textContent.trim();
+      if (dataType === 'pct') return parseFloat(text.replace('%','')) || 0;
+      if (dataType === 'num') return parseFloat(text.replace(/,/g,'')) || 0;
+      if (dataType === 'money') {
+        // e.g. "$29.8bn" -> 29.8, "$2.6bn" -> 2.6
+        const m = text.match(/[\d.]+/);
+        return m ? parseFloat(m[0]) : 0;
+      }
+      return text;
+    }
+
+    rows.sort((a, b) => {
+      const av = parseVal(a), bv = parseVal(b);
+      return newDir === 'asc' ? av - bv : bv - av;
+    });
+    rows.forEach(r => tbody.appendChild(r));
+  }
+
+  // Init: sort medals to top
+  sortTableByMedals('etf-table');
+  sortTableByMedals('mutual-table');
+
+</script>
+</body>
+</html>
